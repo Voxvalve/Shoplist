@@ -26,6 +26,8 @@ public class DB {
     public String port;
     public String userName;
     public String passWord;
+    public String itemName;
+    public String itemAmount;
     
     private Connection connection;
     private Statement stmt;
@@ -76,8 +78,14 @@ public class DB {
         {
             list.add(new Item(rs.getInt("id"), rs.getString("itemName"), rs.getString("numItem"), rs.getString("gotItem")));
         }
-        return list;
-        
-        
+        return list;        
+    }
+    
+    public void addToSQL() throws Exception {        
+        String query = "INSERT INTO shoplist.items (itemName, numItem, gotItem) VALUES (?, ?, 'no')";
+        pstmt = connection.prepareStatement(query);
+        pstmt.setString(1,itemName);
+        pstmt.setString(2,itemAmount);
+        pstmt.executeUpdate();        
     }
 }
