@@ -28,7 +28,7 @@
                 db.setConnection();
                 List<Item> list = db.getAllItems();
             %>
-            <table border="2">
+            <table border="3">
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
@@ -43,6 +43,7 @@
                     <td><%=item.getItemName()%></td>
                     <td><%=item.getNumItem()%></td>
                     <td><%=item.getGotItem()%></td>
+                    <td><input type="checkbox" name=<%=item.getId() %> value="0N" /></td>
                 </tr>
                 <%
                     }
